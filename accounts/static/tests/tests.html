@@ -87,7 +87,7 @@
         Superlists.Accounts.initialize(mockNavigator, user, token, urls);
         var onloginCallback = mockNavigator.id.watch.firstCall.args[0].onlogin;
         var assertion = 'browser-id assertion';
-        onloginCallback('assertion');
+        onloginCallback(assertion);
         equal(
             requests[0].requestBody,
             $.param({ assertion: assertion, csrfmiddlewaretoken: token }),
