@@ -78,7 +78,7 @@
         Superlists.Accounts.initialize(mockNavigator, user, token, urls);
         var onloginCallback = mockNavigator.id.watch.firstCall.args[0].onlogin;
         onloginCallback();
-        equal(requests.length(), 1, 'check ajax request');
+        equal(requests.length, 1, 'check ajax request');
         equal(requests[0].method, 'POST');
         equal(requests[0].url, urls.login, 'check url');
     });
