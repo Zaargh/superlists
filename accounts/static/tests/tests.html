@@ -103,10 +103,10 @@
         server.respondWith([403, {}, "permission denied"]);
 
         onloginCallback();
-        equal(mockNavigator.id.logout.called, false, 'should not logout yet')
+        equal(mockNavigator.id.logout.called, false, 'should not logout yet');
 
         server.respond();
-        equal(mockNavigator.id.logout.called, true, 'should call logout')
+        equal(mockNavigator.id.logout.called, true, 'should call logout');
 
     });
 
