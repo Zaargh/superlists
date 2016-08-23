@@ -1,6 +1,5 @@
 import time
 from .base import FunctionalTest
-from selenium.webdriver.support.ui import WebDriverWait
 
 TEST_EMAIL = 'edith@mockmyid.com'
 
