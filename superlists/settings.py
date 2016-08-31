@@ -25,7 +25,10 @@ SECRET_KEY = 'r^(2()!xtf0b#t3pyuike$^cs0&2ha+7pma1-p1p**_5*u#qjj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# This setting is changed by the deploy script
+DOMAIN = "localhost"
+
+ALLOWED_HOSTS = [DOMAIN]
 
 
 # Application definition
