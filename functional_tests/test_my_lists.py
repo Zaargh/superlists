@@ -48,7 +48,7 @@ class MyListsTest(FunctionalTest):
         self.get_item_input_box().send_keys('Click cows\n')
         second_list_url = self.browser.current_url
         time.sleep(3)
-        
+
         # Under "My lists", her new list appears
         self.browser.find_element_by_link_text('My lists').click()
         time.sleep(5)
