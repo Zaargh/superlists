@@ -1,18 +1,18 @@
 import unittest
 from unittest.mock import Mock, patch
-from django.core.urlresolvers import resolve
+
 from django.contrib.auth import get_user_model
-from django.test import TestCase
 from django.http import HttpRequest
-from django.template.loader import render_to_string
+from django.test import TestCase
 from django.utils.html import escape
 
-from lists.views import new_list
 from lists.forms import (
     DUPLICATE_ITEM_ERROR, EMPTY_ITEM_ERROR,
     ExistingListItemForm, ItemForm
 )
 from lists.models import Item, List
+from lists.views import new_list
+
 User = get_user_model()
 
 

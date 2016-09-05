@@ -1,8 +1,9 @@
 from django.contrib.auth import get_user_model
 from django.shortcuts import render, redirect
-from django.core.exceptions import ValidationError
+
 from lists.forms import ExistingListItemForm, ItemForm, NewListForm
-from lists.models import Item, List
+from lists.models import List
+
 User = get_user_model()
 
 
