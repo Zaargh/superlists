@@ -6,6 +6,7 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.firefox.firefox_profile import FirefoxProfile
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.support.ui import WebDriverWait
 
 from .server_tools import reset_database
@@ -36,10 +37,16 @@ class FunctionalTest(StaticLiveServerTestCase):
         self.binary = FirefoxBinary('/opt/firefox_42/firefox')
         profile = FirefoxProfile()
         profile.set_preference('webdriver.log.file', '/tmp/firefox_console')
-        self.browser = webdriver.Firefox(firefox_binary=self.binary, firefox_profile=profile)
+        d = DesiredCapabilities().FIREFOX
+        d['loggingPrefs'] = {'browser': 'ALL'}
+        self.browser = webdriver.Firefox(
+            firefox_binary=self.binary, firefox_profile=profile, capabilities=d
+        )
         self.browser.implicitly_wait(3)
 
     def tearDown(self):
+        for entry in self.browser.get_log('browser'):
+            print(entry)
         self.browser.quit()
 
     def check_for_row_in_list_table(self, row_text):
