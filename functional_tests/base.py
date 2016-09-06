@@ -35,6 +35,7 @@ class FunctionalTest(StaticLiveServerTestCase):
             reset_database(self.server_host)
         self.binary = FirefoxBinary('/opt/firefox_42/firefox')
         profile = FirefoxProfile()
+        profile.set_preference('webdriver.log.file', '/tmp/firefox_console')
         self.browser = webdriver.Firefox(firefox_binary=self.binary, firefox_profile=profile)
         self.browser.implicitly_wait(3)
 
