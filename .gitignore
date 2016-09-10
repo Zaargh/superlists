@@ -5,3 +5,4 @@ __pycache__
 *.pyc
 /ghostdriver.log
 *.png
+/functional_tests/screendumps/
