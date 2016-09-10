@@ -1,5 +1,6 @@
 import time
 from django.conf import settings
+from unittest import skip
 
 from .base import FunctionalTest
 from .server_tools import create_session_on_server
@@ -19,9 +20,10 @@ class MyListsTest(FunctionalTest):
         self.browser.add_cookie(dict(
             name=settings.SESSION_COOKIE_NAME,
             value=session_key,
-            path='/'
+            path='/',
         ))
 
+    @skip
     def test_logged_in_users_lists_are_saved_as_my_lists(self):
         email = 'edith@example.com'
 
