@@ -32,8 +32,9 @@ class FunctionalTest(StaticLiveServerTestCase):
     def setUp(self):
         if self.against_staging:
             reset_database(self.server_host)
-        self.binary = FirefoxBinary('/opt/firefox_42/firefox')
-        self.browser = webdriver.Firefox(firefox_binary=self.binary)
+        # self.binary = FirefoxBinary('/opt/firefox_42/firefox')
+        # self.browser = webdriver.Firefox(firefox_binary=self.binary)
+        self.browser = webdriver.PhantomJS(executable_path='/opt/phantomjs/bin/phantomjs')
         self.browser.implicitly_wait(3)
 
     def tearDown(self):

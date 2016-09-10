@@ -1,7 +1,9 @@
 import time
 from .base import FunctionalTest
+from selenium.common.exceptions import ElementNotVisibleException
 
 TEST_EMAIL = 'edith@mockmyid.com'
+
 
 class LoginTest(FunctionalTest):
 
@@ -30,14 +32,21 @@ class LoginTest(FunctionalTest):
         self.browser.find_element_by_id(
             'authentication_email'
         ).send_keys(TEST_EMAIL)
-        self.browser.find_element_by_tag_name('button').click()
+        try:
+            self.browser.find_element_by_tag_name('button').click()
+        except ElementNotVisibleException as e:
+            self.browser.get_screenshot_as_file('test_login.png')
+            buttons = self.browser.find_elements_by_tag_name('button')
+            for b in buttons:
+                if b.is_displayed():
+                    b.click()
+                    break
 
         # The Persona window closes
         self.switch_to_new_window('To-Do')
 
         # She can see that she is logged in
         self.wait_to_be_logged_in(email=TEST_EMAIL)
-
         # Refreshing the page, she sees it's a real session login
         # not just a one-off for that page
         self.browser.refresh()
